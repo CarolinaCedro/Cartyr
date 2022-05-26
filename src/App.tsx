@@ -1,12 +1,16 @@
+import { Dashborad } from "./components/Dashboard";
+import { Header } from "./components/Header";
+import { Summary } from "./components/Summary";
 import { GlobalStyles } from "./styles/global";
 
 export function App() {
   return (
-    
-    <div className="App">
+    <>
+      <Header/>
+      <Dashborad/>
+      <Summary/>
       <GlobalStyles/>
-      <h1>Hello world!!</h1>
-    </div>
+    </>
   );
 }
 
