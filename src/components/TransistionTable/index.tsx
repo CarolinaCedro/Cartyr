@@ -1,10 +1,20 @@
-import { useEffect } from "react";
+
+import { useEffect,useState} from "react";
+import { api } from "../../services/api";
 import { Container } from "./styles";
 export function TransistionTable(){
 
+  const [data,setData] = useState([]);
   useEffect(() => {
-   fetch('http://localhost:3000/api/transaction')
-   .then(response=>response.json()).then(data=>console.log(data));
+   api.get('transaction')
+   .then((response) => {
+     console.log(response.data)
+    setData(response.data);
+    
+  })
+  .catch((error) => {
+    console.log(error);
+  });
   }, [])
   
   return (

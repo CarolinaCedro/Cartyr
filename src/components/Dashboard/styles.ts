@@ -21,6 +21,7 @@ button {
   margin-left:1.5rem;
   border-radius: 10rem;
   transition: filter 0.3s;
+  outline: none;
 
   &:hover{
     filter: brightness(0.9);

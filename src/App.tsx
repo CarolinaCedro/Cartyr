@@ -1,9 +1,12 @@
+import { useState } from "react"
+import Modal, { setAppElement } from 'react-modal';
 import { Dashborad } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { Summary } from "./components/Summary";
 import { TransistionTable } from "./components/TransistionTable";
 import { GlobalStyles } from "./styles/global";
 import {createServer} from 'miragejs'
+import { NewTransictionModal } from "./components/NewTransictionModal";
 
 createServer({
   routes(){
@@ -45,12 +48,24 @@ createServer({
   }
 })
 
+Modal.setAppElement('#root')
+
 export function App() {
+  const [isNewTransictionModal,setIsNewTransictionModal] = useState(false);
+
+  function handleOpenModal(){
+  setIsNewTransictionModal(true);
+  }
+
+  function handleCloseModal(){
+    setIsNewTransictionModal(false)
+  }
   return (
     <>
       <Header/>
-      <Dashborad/>
+      <Dashborad onOpenNewTransaction={handleOpenModal}/>
       <Summary/>
+      <NewTransictionModal isOpen={isNewTransictionModal} onRequesClose={handleCloseModal}/>
       <TransistionTable/>
       <GlobalStyles/>
     </>
