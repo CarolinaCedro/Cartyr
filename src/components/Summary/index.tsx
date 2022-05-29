@@ -1,11 +1,16 @@
+import { useContext } from "react"
 import { Container, Content } from "./styles"
 import setUp from '../../assets/setUp.svg'
 import setdown from '../../assets/setdown.svg'
 import moneyWhite from '../../assets/moneyWhite.svg'
+import { TransictionContext } from "../../TransictionContext"
 
 
 
 export function Summary(){
+
+  const data = useContext(TransictionContext)
+  console.log(data)
   return (
     <Container>
       <Content>

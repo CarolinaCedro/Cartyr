@@ -4,6 +4,7 @@ import entradas from '../../assets/entradas.svg'
 import saidas from '../../assets/saidas.svg'
 import {AiOutlineClose} from 'react-icons/ai'
 import { Container, TransictionTypeContainer ,ButtonRadio} from './style';
+import { api } from '../../services/api';
 
 
 interface NewTransictionModalProps{
@@ -13,21 +14,23 @@ interface NewTransictionModalProps{
 
 export function NewTransictionModal({isOpen,onRequesClose}:NewTransictionModalProps){
 
+  
   const [title,setTitle] = useState('');
   const [value,setValue] = useState(0);
   const [typeTransiction,setTypeTransiction] = useState('deposit');
   const [category,setCategory] =  useState('')
 
 
+
   function handleCreateNewTransiction(e:FormEvent){
      e.preventDefault(); 
-
-     console.log(
+     const data = {
        title,
        value,
        typeTransiction,
        category
-     )
+     }
+     api.post('transaction',data)
   }
   
 
