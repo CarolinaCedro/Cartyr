@@ -4,7 +4,7 @@ import { TransictionContext } from "../../TransictionContext";
 import { Container } from "./styles";
 export function TransistionTable(){
 
-  const data =  useContext(TransictionContext)
+  const {data} =  useContext(TransictionContext)
 
   return (
 

@@ -9,7 +9,7 @@ import { TransictionContext } from "../../TransictionContext"
 
 export function Summary(){
 
-  const data = useContext(TransictionContext)
+  const {data} = useContext(TransictionContext)
   console.log(data)
   return (
     <Container>
