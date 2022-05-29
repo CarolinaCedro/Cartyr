@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { TransactionProvider } from "./TransictionContext";
+import { TransactionProvider } from "./hooks/useTransaction";
 import Modal from 'react-modal';
 import { Dashborad } from "./components/Dashboard";
 import { Header } from "./components/Header";
@@ -20,37 +20,20 @@ createServer({
       transactions :[
         {
           id:1,
-          title: 'Teste 01',
-          type: 'deposit',
-          amount: 100.00,
-          category:'categoria 01',
-          createdAt: new Date('2022-12-14 11:08:00')
-        },
-
-        {
-          id:2,
-          title: 'Teste 02',
-          type: 'deposit',
-          amount: 200.00,
-          category:'categoria 02',
-          createdAt: new Date('2022-12-14 11:08:00')
-        },
-        {
-          id:3,
-          title: 'Teste 03',
-          type: 'deposit',
-          amount: 300.00,
-          category:'categoria 03',
-          createdAt: new Date('2022-12-14 11:08:00')
-        },
-        {
-          id:4,
-          title: 'Teste 04',
+          title: 'Criação de site',
           type: 'deposit',
           amount: 10000,
-          category:'categoria 04',
-          createdAt: new Date('2022-12-14 11:08:00')
-        }
+          category:'Freelancer',
+          createdAt: new Date('2022-05-01 11:08:00')
+        },
+        {
+          id:2,
+          title: 'Aluguel Apartamento',
+          type: 'withdraw',
+          amount: 1500,
+          category:'Despesas Gerais',
+          createdAt: new Date('2022-05-15 11:08:00')
+        },
       ] 
     })
   },

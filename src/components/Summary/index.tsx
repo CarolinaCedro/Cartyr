@@ -1,16 +1,29 @@
-import { useContext } from "react"
+
+import { useTransaction } from "../../hooks/useTransaction"
 import { Container, Content } from "./styles"
 import setUp from '../../assets/setUp.svg'
 import setdown from '../../assets/setdown.svg'
 import moneyWhite from '../../assets/moneyWhite.svg'
-import { TransictionContext } from "../../TransictionContext"
-
 
 
 export function Summary(){
+  const {data} = useTransaction();
+  const summary = data.reduce((acc,transaction) => {
+  if(transaction.type === 'deposit'){
+    acc.deposits += transaction.amount;
+    acc.total += transaction.amount;
+  }else{
+    acc.withdraw += transaction.amount;
+    acc.total -= transaction.amount;
+  }
+  return acc;
 
-  const {data} = useContext(TransictionContext)
-  console.log(data)
+ },{
+    deposits:0,
+    total:0,
+    withdraw:0
+ });
+
   return (
     <Container>
       <Content>
@@ -19,7 +32,12 @@ export function Summary(){
           <p>Entradas</p>
           <img src={setUp} alt="" />
           </header>
-          <strong>R$ 1.000.00</strong>
+          <strong>
+          {new Intl.NumberFormat('pt-BR',{
+                  style:'currency',
+                  currency:'BRL'
+          }).format(summary.deposits)}
+          </strong>
       </div>
 
       <div>
@@ -27,14 +45,24 @@ export function Summary(){
           <p>- Saídas</p>
           <img src={setdown} alt="" />
           </header>
-          <strong>R$ 500.00</strong>
+          <strong>
+          {new Intl.NumberFormat('pt-BR',{
+                  style:'currency',
+                  currency:'BRL'
+          }).format(summary.withdraw)}
+          </strong>
       </div>
       <div className="backgroudHighLigth">
           <header>
           <p>Total</p>
           <img src={moneyWhite} alt="" />
           </header>
-          <strong>R$ 500.00</strong>
+          <strong>
+          {new Intl.NumberFormat('pt-BR',{
+                  style:'currency',
+                  currency:'BRL'
+          }).format(summary.total)}
+          </strong>
       </div>
       </Content>
      

@@ -1,10 +1,10 @@
 import Modal from 'react-modal'
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useState } from 'react';
+import {useTransaction } from '../../hooks/useTransaction';
 import entradas from '../../assets/entradas.svg'
 import saidas from '../../assets/saidas.svg'
 import {AiOutlineClose} from 'react-icons/ai'
 import { Container, TransictionTypeContainer ,ButtonRadio} from './style';
-import { TransictionContext } from '../../TransictionContext';
 
 
 
@@ -15,7 +15,7 @@ interface NewTransictionModalProps{
 
 export function NewTransictionModal({isOpen,onRequesClose}:NewTransictionModalProps){
 
-  const { createTransiction} = useContext(TransictionContext)  
+  const { createTransiction} = useTransaction()
   const [title,setTitle] = useState('');
   const [amount,setAmount] = useState(0);
   const [type,setType] = useState('deposit');

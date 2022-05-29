@@ -1,10 +1,9 @@
 
-import { useContext } from "react";
-import { TransictionContext } from "../../TransictionContext";
+import { useTransaction } from "../../hooks/useTransaction";
 import { Container } from "./styles";
 export function TransistionTable(){
 
-  const {data} =  useContext(TransictionContext)
+  const {data} =  useTransaction();
 
   return (
 
